@@ -11,11 +11,17 @@ namespace Template
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Texture2D rödLåda;
+        Rectangle rödLådaKollisionskollare;
+        Rectangle blåLådorKollisionskollare;
+        Vector2 rödLådaPos;
+
         //KOmentar
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            
         }
 
         /// <summary>
@@ -27,7 +33,7 @@ namespace Template
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            Vector2 rödLådaPos = new Vector2(500, 0);
             base.Initialize();
         }
 
@@ -39,6 +45,8 @@ namespace Template
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            rödLåda = Content.Load<Texture2D>("RödLåda");
 
             // TODO: use this.Content to load your game content here 
         }
@@ -63,7 +71,38 @@ namespace Template
                 Exit();
 
             // TODO: Add your update logic here
+            KeyboardState kstate = Keyboard.GetState();
 
+            if(kstate.IsKeyDown(Keys.NumPad1))
+            {
+
+            }
+            else if (kstate.IsKeyDown(Keys.NumPad2))
+            {
+
+            }
+            else if (kstate.IsKeyDown(Keys.NumPad2))
+            {
+
+            }
+            base.Update(gameTime);
+
+            if (kstate.IsKeyDown(Keys.W))
+            {
+                rödLådaPos.Y += wKnappen;
+            }
+            else if (kstate.IsKeyDown(Keys.A))
+            {
+                rödLådaPos.X += aKnappen;
+            }
+            else if (kstate.IsKeyDown(Keys.D))
+            {
+                rödLådaPos.X += dKnappen;
+            }
+            else if (kstate.IsKeyDown(Keys.S))
+            {
+                rödLådaPos.Y += sKnappen;
+            }
             base.Update(gameTime);
         }
 
@@ -73,9 +112,13 @@ namespace Template
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            //GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Red);
 
             // TODO: Add your drawing code here.
+            spriteBatch.Begin();
+            spriteBatch.Draw(rödLåda, rödLådaPos, Color.White);
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
