@@ -13,7 +13,7 @@ namespace Template
         SpriteBatch spriteBatch;
         Texture2D rödLåda;
         Rectangle rödLådaKollisionskollare;
-        Rectangle blåLådorKollisionskollare;
+        Rectangle blåLådaKollisionskollare;
         Vector2 rödLådaPos;
 
         //KOmentar
